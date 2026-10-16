@@ -67,12 +67,12 @@ Resistive gauges are preferred to ultrasonic ones (point measurement, no interna
 ### First real data: UiO wave flume (Lande 2026, doi:10.18710/FZN3AL, CC BY 4.0)
 
 Case C01A07F01 (flat bed, h = 0.6 m, focused group, 7 mm), probes 2–4:
-measured k is **1.30 % ± 0.25 % larger** than exact linear theory, **constant over
-0.85–1.6 Hz (k h = 1.8–5.8)**, χ² 0.9 / 7. A depth error cannot cause this (k h > 2 is
+measured k is **1.39 % ± 0.25 % larger** than exact linear theory (g = 9.819 m/s², as used by
+the data authors), **constant over 0.85–1.6 Hz (k h = 1.8–5.8)**, χ² 0.9 / 7. A depth error cannot cause this (k h > 2 is
 practically deep water), amplitude dispersion and surface tension are 10–30× smaller and
 of the opposite sign. Inverted as effective probe positions, the offsets are constant in
-frequency (probe 2: −14 ± 4 mm, probe 4: +5 ± 4 mm relative to probe 3), which points to
-the probe spacing (≈ 19 mm over 1.44 m) rather than to channel time skew (that would scale
+frequency (probe 2: −15 ± 4 mm, probe 4: +6 ± 4 mm relative to probe 3), which points to
+the probe spacing (≈ 20 mm over 1.44 m) rather than to channel time skew (that would scale
 with phase speed). This is an open question for the data authors, not a claim of error;
 one run only. The 25 mm case is not analysable with the linear method (nonlinear, probe
 dropouts; the `_corr` file is needed). Script: `examples/uio_flume_A07.py`.

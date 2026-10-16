@@ -14,6 +14,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from dispersion_audit import broadband, theory  # noqa: E402
 
 FS, H = 125.0, 0.6
+G = 9.819                                         # gravity used by the data authors (Oslo)
 X = np.array([1.0, 7.407, 8.15, 8.845])          # documented probe positions
 
 
@@ -35,7 +36,7 @@ def main(fn):
           "noise from 42-64 s")
     r, x = e[:, 1:], X[1:]
     win = broadband.auto_windows(r, FS, 20.0, search=(8, 45))
-    rows = broadband.analyze_transient(r, FS, x, H, win, noise_window=(42, 64))
+    rows = broadband.analyze_transient(r, FS, x, H, win, noise_window=(42, 64), g=G)
     for q in rows[::2]:
         print(f"  f {q['f']:.3f} Hz  kh {q['kh']:.2f}  dk/k {q['dk_rel']:+.2e} ± {q['sigma_dk_rel']:.1e}")
     m, s, chi2, dof = broadband.summarize(rows)
@@ -52,7 +53,7 @@ def main(fn):
     offs = []
     for fi in np.arange(0.85, 1.6, 0.075):
         i = np.argmin(abs(f - fi))
-        k = theory.wavenumber(2 * np.pi * f[i], H)
+        k = theory.wavenumber(2 * np.pi * f[i], H, g=G)
         row = []
         for j in range(4):
             dph = np.angle(F[i, j] / F[i, 2])

@@ -71,6 +71,8 @@ def analyze_transient(records, fs, x, h, window, noise_window, band=None, min_sn
         raise ValueError("a window runs past the end of the record")
     f, X, _ = _spectra(seg, fs)
     X = X * np.exp(-2j * np.pi * f[:, None] * (np.array(starts)[None, :] / fs))   # common clock
+    if records[n0:n0 + n].shape[0] != n:
+        raise ValueError("noise window runs past the end of the record")
     _, N, _ = _spectra(records[n0:n0 + n], fs)
     amp = np.abs(X)
     namp = np.abs(N)
