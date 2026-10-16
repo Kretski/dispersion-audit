@@ -1,0 +1,33 @@
+Part A — effective Λ of solvers (h = 0.50 m, Λ_phys = −h²/3 = -8.3333e-02 m²)
+  EXACT  dx 0.05 m   Λ_meas -8.1878e-02   Λ_pred -8.3333e-02   meas/pred  0.9825   Λ_meas − Λ_phys +1.456e-03
+  EXACT  dx 0.10 m   Λ_meas -8.1878e-02   Λ_pred -8.3333e-02   meas/pred  0.9825   Λ_meas − Λ_phys +1.456e-03
+  EXACT  dx 0.20 m   Λ_meas -8.1878e-02   Λ_pred -8.3333e-02   meas/pred  0.9825   Λ_meas − Λ_phys +1.456e-03
+  SWE    dx 0.05 m   Λ_meas -1.5625e-04   Λ_pred -1.5625e-04   meas/pred  1.0000   Λ_meas − Λ_phys +8.318e-02
+  SWE    dx 0.10 m   Λ_meas -6.2500e-04   Λ_pred -6.2500e-04   meas/pred  1.0000   Λ_meas − Λ_phys +8.271e-02
+  SWE    dx 0.20 m   Λ_meas -2.5000e-03   Λ_pred -2.5000e-03   meas/pred  1.0000   Λ_meas − Λ_phys +8.083e-02
+  BOUSS  dx 0.05 m   Λ_meas -8.2428e-02   Λ_pred -8.3490e-02   meas/pred  0.9873   Λ_meas − Λ_phys +9.050e-04
+  BOUSS  dx 0.10 m   Λ_meas -8.2881e-02   Λ_pred -8.3958e-02   meas/pred  0.9872   Λ_meas − Λ_phys +4.526e-04
+  BOUSS  dx 0.20 m   Λ_meas -8.4690e-02   Λ_pred -8.5833e-02   meas/pred  0.9867   Λ_meas − Λ_phys -1.357e-03
+
+  injection (spectral, ω² = ghk²(1+Λk²)), dx 0.10:
+    Λ_inj -8.3333e-02   Λ_meas -8.3333e-02   diff -4.2e-17
+    Λ_inj -8.7500e-02   Λ_meas -8.7500e-02   diff +1.8e-16
+    Λ_inj +0.0000e+00   Λ_meas -2.6964e-16   diff -2.7e-16
+    Λ_inj +1.0000e-03   Λ_meas +1.0000e-03   diff -2.6e-16
+
+Part B — flume feasibility (20 gauges over 10 m, a = 2 cm, noise 0.5 mm, 60 s at 50 Hz)
+  δΛ_inj +0.000e+00   mean(Λ̂ − Λ_phys) +9.197e-06   σ(Λ̂) 1.61e-05   σ/|Λ_phys| 1.93e-04
+  δΛ_inj -8.333e-04   mean(Λ̂ − Λ_phys) -8.242e-04   σ(Λ̂) 1.66e-05   σ/|Λ_phys| 1.99e-04
+  δΛ_inj +1.000e-03   mean(Λ̂ − Λ_phys) +1.007e-03   σ(Λ̂) 1.62e-05   σ/|Λ_phys| 1.94e-04
+  δΛ_inj -4.167e-03   mean(Λ̂ − Λ_phys) -4.157e-03   σ(Λ̂) 1.50e-05   σ/|Λ_phys| 1.80e-04
+  reference: grid term Δx²/12 at Δx = 0.05/0.10/0.20 m = 2.1e-04 / 8.3e-04 / 3.3e-03 m²
+h = 0.5 m, kh = 0.1–0.8; numerical prediction δΛ_num = −Δx²/12 + ghΔt²/12
+solver    dx  δΛ vs own PDE  pred δΛ_num   ratio  δΛ vs exact  |δΛ_tot|/(h²/3)
+SWE     0.05    -1.5625e-04  -1.5625e-04  1.0000  +8.1721e-02           0.9807
+SWE     0.10    -6.2500e-04  -6.2500e-04  1.0000  +8.1253e-02           0.9750
+SWE     0.20    -2.5000e-03  -2.5000e-03  1.0000  +7.9378e-02           0.9525
+BOUSS   0.05    -1.5083e-04  -1.5625e-04  0.9653  -5.5060e-04           0.0066
+BOUSS   0.10    -6.0328e-04  -6.2500e-04  0.9652  -1.0030e-03           0.0120
+BOUSS   0.20    -2.4127e-03  -2.5000e-03  0.9651  -2.8125e-03           0.0337
+null EXACT vs exact: δΛ = -7.8e-17
+SWE would mimic Λ_phys if Δx²(1−C²)/12 = h²/3, i.e. Δx = 1.15 m at C = 0.5
