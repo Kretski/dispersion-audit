@@ -1,0 +1,19 @@
+# 7 mm, three repeats
+D07a.csv: fs 250 Hz  dk/k = +4.79e-03 ± 4.5e-04 (chi2 28.2/7)
+    position (dk ~ k)              coefficient 0.00479   chi2 28.2 / 7
+    slowness/timing (dk ~ omega)   coefficient 0.00388   chi2 5.1 / 7
+D07b.csv: fs 250 Hz  dk/k = +5.01e-03 ± 5.2e-04 (chi2 33.1/7)
+    position (dk ~ k)              coefficient 0.00501   chi2 33.1 / 7
+    slowness/timing (dk ~ omega)   coefficient 0.00394   chi2 5.8 / 7
+D07c.csv: fs 250 Hz  dk/k = +4.76e-03 ± 4.4e-04 (chi2 49.9/7)
+    position (dk ~ k)              coefficient 0.00476   chi2 49.9 / 7
+    slowness/timing (dk ~ omega)   coefficient 0.00391   chi2 11.6 / 7
+repeats: mean +4.86e-03, scatter 1.4e-04
+
+# 25 mm and 45 mm (nonlinear; chi2 large because dk depends strongly on f)
+D25.csv: fs 250 Hz  dk/k = -1.95e-03 ± 1.6e-03 (chi2 1210.4/7)
+    position (dk ~ k)              coefficient -0.00195   chi2 1210.4 / 7
+    slowness/timing (dk ~ omega)   coefficient -0.00091   chi2 1369.3 / 7
+D45.csv: fs 250 Hz  dk/k = -2.58e-02 ± 3.7e-03 (chi2 8276.5/7)
+    position (dk ~ k)              coefficient -0.02579   chi2 8276.5 / 7
+    slowness/timing (dk ~ omega)   coefficient -0.02081   chi2 15251.4 / 7

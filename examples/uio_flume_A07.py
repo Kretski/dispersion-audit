@@ -43,7 +43,7 @@ def main(fn):
     print(f"band mean dk/k = {m:+.2e} ± {s:.1e}  (chi2 {chi2:.1f} / {dof})")
 
     print("\neffective probe positions relative to probe 3, assuming exact linear k "
-          "(constant in f -> position offset; proportional to c_p -> channel time skew)")
+          "(diagnostic only: a position error gives offsets constant in f, a timing offset gives offsets proportional to c_p; with a 1.44 m array the two are not separable here)")
     n = int(20 * FS)
     st = [int(round(w[0] * FS)) for w in broadband.auto_windows(e, FS, 20.0, search=(8, 45))]
     seg = np.column_stack([e[s0:s0 + n, j] for j, s0 in enumerate(st)])

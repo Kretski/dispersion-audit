@@ -1,6 +1,6 @@
 [project]
 name = "dispersion-audit"
-version = "0.2.1"
+version = "0.3.0"
 description = "Measure how well a wave basin or numerical wave model reproduces linear dispersion"
 authors = [{name = "Dimitar Kretski"}]
 license = {text = "MIT"}

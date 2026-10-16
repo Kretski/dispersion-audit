@@ -66,24 +66,38 @@ Resistive gauges are preferred to ultrasonic ones (point measurement, no interna
 
 ### First real data: UiO wave flume (Lande 2026, doi:10.18710/FZN3AL, CC BY 4.0)
 
-Case C01A07F01 (flat bed, h = 0.6 m, focused group, 7 mm), probes 2–4:
-measured k is **1.39 % ± 0.25 % larger** than exact linear theory (g = 9.819 m/s², as used by
-the data authors), **constant over 0.85–1.6 Hz (k h = 1.8–5.8)**, χ² 0.9 / 7. A depth error cannot cause this (k h > 2 is
-practically deep water), amplitude dispersion and surface tension are 10–30× smaller and
-of the opposite sign. Inverted as effective probe positions, the offsets are constant in
-frequency (probe 2: −15 ± 4 mm, probe 4: +6 ± 4 mm relative to probe 3), which points to
-the probe spacing (≈ 20 mm over 1.44 m) rather than to channel time skew (that would scale
-with phase speed). This is an open question for the data authors, not a claim of error;
-one run only. The 25 mm case is not analysable with the linear method (nonlinear, probe
-dropouts; the `_corr` file is needed). Script: `examples/uio_flume_A07.py`.
+Flat bed, h = 0.6 m, focused groups, g = 9.819 m/s² (as used by the data authors), band
+0.85–1.6 Hz (main test) and 0.9–1.6 Hz (dissipation tests); k h ≈ 1.8–5.8, practically deep
+water, so a depth error cannot matter.
 
-Known limitations:
-- Applied to one real data set so far (above); not yet to an external numerical model (e.g. SWASH).
-- A small bias of ~5×10⁻⁵ in δk/k (≈ 0.3–0.5 σ) remains at k h ≈ 2 in the synthetic tests.
-- Linear theory only: strongly nonlinear or breaking waves are outside the scope.
-- The long-wave Λ summary is meaningful only for k h ≲ 1; for deeper water δk/k is reported.
-- A raw fit of Λ against −h²/3 has a truncation bias of ~1.7 % (k h ≤ 0.8); always use the
-  residual against the exact relation (as the code does).
+| Run | Probes | Amplitude | δk/k (measured vs exact linear) |
+|---|---|---|---|
+| main test, 2024 (C01A07F01) | 7.407 / 8.150 / 8.845 m | 7 mm | **+1.39 % ± 0.25 %** |
+| dissipation test, 2025, 3 repeats | 5 / 8 / 12 m | 7 mm | **+0.49 % ± 0.05 %** (repeat scatter 0.01 %) |
+| dissipation test, 2025 | 5 / 8 / 12 m | 25 mm | −0.2 % ± 0.2 % (strongly f-dependent) |
+| dissipation test, 2025 | 5 / 8 / 12 m | 45 mm | −1.3 … −2.5 %, growing with f |
+
+What the numbers support:
+- The amplitude trend (+0.49 % → −0.2 % → −1.3 … −2.5 %) has the sign and size of Stokes amplitude
+  dispersion (steeper waves travel faster), so the tool resolves real nonlinear physics.
+- Linear (7 mm) waves show a **repeatable positive excess in k** in both campaigns, i.e. they
+  appear slightly slower than ideal linear theory.
+
+What is not resolved (open question for the data authors, not a claim of error):
+- In the 2025 runs the excess fits δk ∝ ω (a uniform extra slowness ≈ 3.8 ms/m) far better
+  than a probe-position scale error (δk ∝ k). Probe-specific timing offsets are ruled out:
+  the 25 mm run from the same day and probes shows no such offsets.
+- The measured amplitude decay is 2–5× too small to explain the excess by laminar boundary
+  layers alone (for which the phase shift equals the damping); surface contamination,
+  probe-position uncertainty (dissipation-test positions are given to 0.1 m) or a
+  combination remain possible.
+- In the 2024 main test the array is short (1.44 m) and the data cannot distinguish a
+  position offset (≈ 21 mm) from a timing offset (≈ 17 ms); the excess per metre is about
+  three times larger than in 2025.
+- The probe at 1 m from the wavemaker is excluded (likely near-field effects).
+
+Scripts: `examples/uio_flume_A07.py` (main test), `examples/uio_dissipation.py` (dissipation tests). One-run and three-repeat results are
+reproducible from the public files.
 
 ## Layout
 

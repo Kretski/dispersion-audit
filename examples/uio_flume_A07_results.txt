@@ -9,7 +9,7 @@ k(f) from probes 2-4 (x = 7.407, 8.150, 8.845 m), per-gauge 20 s windows, noise 
   f 1.550 Hz  kh 5.80  dk/k +1.36e-02 ± 6.3e-03
 band mean dk/k = +1.39e-02 ± 2.5e-03  (chi2 0.9 / 7)
 
-effective probe positions relative to probe 3, assuming exact linear k (constant in f -> position offset; proportional to c_p -> channel time skew)
+effective probe positions relative to probe 3, assuming exact linear k (diagnostic only: a position error gives offsets constant in f, a timing offset gives offsets proportional to c_p; with a 1.44 m array the two are not separable here)
   offset from documented position [mm], mean ± spread over 0.85-1.6 Hz:
     probe 1 (x = 1.000 m):  -34.9 ± 16.4
     probe 2 (x = 7.407 m):  -14.7 ± 4.2
