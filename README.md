@@ -62,9 +62,23 @@ Resistive gauges are preferred to ultrasonic ones (point measurement, no interna
 | Synthetic gauges, 25 % reflection, 0.5 mm noise | pull mean 0.0–0.5, pull std 0.9–1.1 (40 runs per case) |
 | Injected δk/k = +1 %, −2 % | recovered within 4σ, reflection within 0.03 |
 | Depth fit, 4 periods | 0.505 m recovered to < 2 mm |
+| Focused group, synthetic (broadband k(f)) | unbiased; injected +1 % recovered; σ conservative |
+
+### First real data: UiO wave flume (Lande 2026, doi:10.18710/FZN3AL, CC BY 4.0)
+
+Case C01A07F01 (flat bed, h = 0.6 m, focused group, 7 mm), probes 2–4:
+measured k is **1.30 % ± 0.25 % larger** than exact linear theory, **constant over
+0.85–1.6 Hz (k h = 1.8–5.8)**, χ² 0.9 / 7. A depth error cannot cause this (k h > 2 is
+practically deep water), amplitude dispersion and surface tension are 10–30× smaller and
+of the opposite sign. Inverted as effective probe positions, the offsets are constant in
+frequency (probe 2: −14 ± 4 mm, probe 4: +5 ± 4 mm relative to probe 3), which points to
+the probe spacing (≈ 19 mm over 1.44 m) rather than to channel time skew (that would scale
+with phase speed). This is an open question for the data authors, not a claim of error;
+one run only. The 25 mm case is not analysable with the linear method (nonlinear, probe
+dropouts; the `_corr` file is needed). Script: `examples/uio_flume_A07.py`.
 
 Known limitations:
-- **Not yet applied to real basin data or to an external model (e.g. SWASH).** This is the next step.
+- Applied to one real data set so far (above); not yet to an external numerical model (e.g. SWASH).
 - A small bias of ~5×10⁻⁵ in δk/k (≈ 0.3–0.5 σ) remains at k h ≈ 2 in the synthetic tests.
 - Linear theory only: strongly nonlinear or breaking waves are outside the scope.
 - The long-wave Λ summary is meaningful only for k h ≲ 1; for deeper water δk/k is reported.
@@ -77,6 +91,7 @@ Known limitations:
 dispersion_audit/theory.py     exact linear dispersion, wavenumber solver
 dispersion_audit/gauges.py     complex amplitudes, k fit with reflection, bootstrap, depth fit
 dispersion_audit/synthetic.py  synthetic gauge records (null / injection tests)
+dispersion_audit/broadband.py  k(f) from a transient wave group (per-gauge windows)
 dispersion_audit/cli.py        command line for regular-wave runs
 examples/solver_audit.py       effective Λ of three reference solvers
 examples/residual_audit.py     residual version (solver vs own PDE, solver vs exact)
