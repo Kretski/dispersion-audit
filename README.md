@@ -76,6 +76,7 @@ water, so a depth error cannot matter.
 | dissipation test, 2025, 3 repeats | 5 / 8 / 12 m | 7 mm | **+0.49 % ± 0.05 %** (repeat scatter 0.01 %) |
 | dissipation test, 2025 | 5 / 8 / 12 m | 25 mm | −0.2 % ± 0.2 % (strongly f-dependent) |
 | dissipation test, 2025 | 5 / 8 / 12 m | 45 mm | −1.3 … −2.5 %, growing with f |
+| shoal, Nov 2024 (C02A07F01) | 7.407 / 8.150 / 8.845 m over h = 0.19 m | 7 mm | documented geometry fits (χ² 20 / 14); see below |
 
 What the numbers support:
 - The amplitude trend (+0.49 % → −0.2 % → −1.3 … −2.5 %) has the sign and size of Stokes amplitude
@@ -96,7 +97,18 @@ What is not resolved (open question for the data authors, not a claim of error):
   three times larger than in 2025.
 - The probe at 1 m from the wavemaker is excluded (likely near-field effects).
 
-Scripts: `examples/uio_flume_A07.py` (main test), `examples/uio_dissipation.py` (dissipation tests). One-run and three-repeat results are
+Shoal case (variable depth, WKB phase integral of exact linear k over the documented
+geometry; kh = 0.8–1.9 on the shoal top, where k is depth-sensitive, about −0.2 % per mm):
+- The documented top depth (190 mm) fits at χ² 20 / 14; a best-fit depth of 184.7 mm improves
+  this to 13.5 / 13 (≈ 2.6 σ, weak).
+- Probe 4 (8.845 m) is consistent with its documented position (+0.9 ± 2.8 mm relative to
+  probe 3); probe 2 (7.407 m) shows −9.5 ± 2.8 mm (or −8.8 ± 2.6 ms). In the flat-bed main
+  test, two months earlier with the same probe positions, probe 2 gave −15 ± 4 mm, so the
+  probe-2 offset is seen in two independent runs; probe 4 differs between them (+6 ± 4 vs
+  +1 ± 3 mm), which is within the uncertainties.
+
+Scripts: `examples/uio_flume_A07.py` (main test), `examples/uio_dissipation.py` (dissipation tests),
+`examples/uio_shoal.py` (shoal case). One-run and three-repeat results are
 reproducible from the public files.
 
 ## Layout
